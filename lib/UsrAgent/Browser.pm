@@ -40,11 +40,16 @@ sub Data
 	return ($data{$browser});
 }
 
+=head2 Logo($browser, $size)
+
+=cut
+
 sub Logo
 {
     my ($browser, $size) = @_;
 
-    my $logo = $DIR_LOGO_BROWSER . lc $browser;
+    my $logo = $DIR_LOGO_BROWSER 
+		. ($browser =~ /MSIE/i ? 'internet_explorer' : lc $browser);
     $logo .= "-${size}.png";
 
     return ($logo);

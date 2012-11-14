@@ -12,6 +12,7 @@ use warnings;
 use Dancer ':syntax';
 
 use UsrAgent::Browser;
+use UsrAgent::DB;
 use UsrAgent::OS;
 use UsrAgent::Parser;
 
@@ -23,14 +24,25 @@ our $VERSION = '0.1';
 
 =cut
 
-get '/' => sub 
+any ['get', 'post'] => '/' => sub 
 {
 	my $ip = request->remote_address;
-	my $ua = request->user_agent;
+	my $ua = undef;
+
+	if (request->method() eq "POST") 
+	{
+		$ua = params->{ua};		
+	}
+	else
+	{
+		$ua = request->user_agent;
+	}
 
 	my %info = UsrAgent::Parser::Info($ua);
 	my $b_data = UsrAgent::Browser::Data($info{browser});
 	my $os_data = UsrAgent::OS::Data($info{os});
+
+	UsrAgent::DB::Save(\%info);
 
 	template 'home', 
 		{	

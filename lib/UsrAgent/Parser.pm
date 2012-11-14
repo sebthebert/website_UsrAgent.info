@@ -52,6 +52,10 @@ sub Info
         if ($ua =~ $re)
         {
 			%info = %+;
+			$info{os} = ($info{os} =~ /^(hpw|web)OS$/ 
+                ? 'WebOS' : $info{os});
+			$info{os} = ($info{os} =~ /^Symb(OS|ian|ianOS)$/ 
+				? 'Symbian' : $info{os});
 			$info{useragent} = $ua;
             return (%info);
         }

@@ -3,10 +3,10 @@
 <div class="g-plusone"></div>
 </div>
 
-<form>
+<form method="POST" action="/">
 <div class="form-actions">
-<div align="center"><textarea rows="3" class="span7" placeholder="<% ua %>"></textarea></div>
-<div align="center"><button class="btn btn-inverse" type="button">
+<div align="center"><textarea rows="3" class="span7" placeholder="Enter your UserAgent here" name="ua"><% ua %></textarea></div>
+<div align="center"><button class="btn btn-inverse" type="submit">
 <i class="icon-search icon-white"></i> Get Information from User Agent</button></div>
 </div>
 </form>

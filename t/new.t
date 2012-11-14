@@ -3,39 +3,32 @@
 use strict;
 use warnings;
 
-my $FILE_REGEXPS = 'data/regexps.conf';
+use FindBin;
+use lib "$FindBin::Bin/../lib/";
 
-my @regexps = ();
+use UsrAgent::Parser;
 
-open my $file, '<', $FILE_REGEXPS;
-while (my $line = <$file>)
-{
-	chomp $line;
-	push @regexps, qr/$line/	if (($line !~ /^#/) && ($line !~ /^$/));
-}
-close $file;
-printf "%d regexps loaded !\n", scalar(@regexps);
+my %stats = ();
 
-my $count_match = 0;
 open my $file_data, '<', 'data/user_agents.txt';
 while (my $ua = <$file_data>)
 {
 	chomp $ua;
-	my $matched = 0;
-	foreach my $re (@regexps)
-	{
-		if ($ua =~ $re)
-		{
-#			printf "Match:\n\tOS: %s %s\n\tBrowser: %s %s\n", 
-#				$+{os}, $+{os_version},
-#				$+{browser}, $+{browser_version};
-			$count_match++;
-			$matched = 1;
-			next;
-		}
-	}
-	printf "$ua\n"	if (!$matched);
+	my %info = UsrAgent::Parser::Info($ua);
+			
+	$stats{os}{$info{os}} = $stats{os}{$info{os}} + 1;
+	$stats{browser}{$info{browser}} = $stats{browser}{$info{browser}} + 1;
+	
+	printf "$ua\n"	if (! %info);
 }
 close $file_data;
 
-printf "Matched: %d\n", $count_match;
+
+foreach my $os (sort keys $stats{os})
+{
+	printf "%s: %d\n", $os, $stats{os}{$os};
+}
+foreach my $b (sort keys $stats{browser})
+{
+    printf "%s: %d\n", $b, $stats{browser}{$b};
+}
