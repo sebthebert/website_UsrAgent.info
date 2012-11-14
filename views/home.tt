@@ -1,0 +1,33 @@
+<div align="center">
+<div class="fb-like" data-href="http://usragent.info" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+<div class="g-plusone"></div>
+</div>
+
+<form>
+<div class="form-actions">
+<div align="center"><textarea rows="3" class="span7" placeholder="<% ua %>"></textarea></div>
+<div align="center"><button class="btn btn-inverse" type="button">
+<i class="icon-search icon-white"></i> Get Information from User Agent</button></div>
+</div>
+</form>
+
+<table class="table table-bordered">
+<tbody>
+
+<tr><td>IP</td><td><% ip %></td></tr>
+
+<tr><td>OS</td>
+<td bgcolor="<% os_color %>"><img src="<% os_logo %>">
+<a href="/os/<% info.os %>"><% info.os %></a></td></tr>
+<tr><td>OS Version</td><td><% info.os_version %></td></tr>
+
+<tr><td>Browser</td>
+<td bgcolor="<% browser_color %>"><img src="<% browser_logo %>">
+<a href="/browser/<% info.browser %>"><% info.browser %></a></td></tr>
+<tr><td>Browser Version</td><td><% info.browser_version %></td></tr>
+
+<tr><td>Device Company</td><td><% info.device_company %></td></tr>
+<tr><td>Device Model</td><td><% info.device_model %></td></tr>
+
+</tbody>
+</table>

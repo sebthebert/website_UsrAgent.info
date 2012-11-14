@@ -1,0 +1,9 @@
+<table class="table table-bordered">
+<tbody>
+
+<tr><td rowspan="4">
+<img src="<% browser_logo %>"></td><td><h1><% browser %></h1></td></tr>
+<tr><td><a href="<% website %>"><% website %></a></td></tr>
+
+</tbody>
+</table>

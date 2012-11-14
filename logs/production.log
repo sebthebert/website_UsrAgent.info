@@ -1,0 +1,5 @@
+[24222] error @0.002890> [hit #13]Supplied view (os_info) not found -  does not exist in /usr/local/share/perl/5.10.1/Dancer/Template/Abstract.pm l. 181
+[24702] error @0.003089> [hit #1]Supplied view (os_info) not found -  does not exist in /usr/local/share/perl/5.10.1/Dancer/Template/Abstract.pm l. 181
+[24780] error @0.002670> [hit #6]Supplied view (os_info) not found -  does not exist in /usr/local/share/perl/5.10.1/Dancer/Template/Abstract.pm l. 181
+[24780] error @0.002623> [hit #9]Supplied view (os_info) not found -  does not exist in /usr/local/share/perl/5.10.1/Dancer/Template/Abstract.pm l. 181
+[24780] error @0.002571> [hit #10]Supplied view (os_info) not found -  does not exist in /usr/local/share/perl/5.10.1/Dancer/Template/Abstract.pm l. 181
