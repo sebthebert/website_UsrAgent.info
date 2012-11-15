@@ -26,6 +26,7 @@
 <a href="/browser/<% info.browser %>"><% info.browser %></a></td></tr>
 <tr><td>Browser Version</td><td><% info.browser_version %></td></tr>
 
+<tr><td>Device Type</td><td><% info.device_type %></td></tr>
 <tr><td>Device Company</td><td><% info.device_company %></td></tr>
 <tr><td>Device Model</td><td><% info.device_model %></td></tr>
 

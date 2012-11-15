@@ -13,15 +13,14 @@ use File::Slurp;
 use JSON;
 
 my $FILE_BROWSER = "$FindBin::Bin/../data/useragent_browser.json";
+my $FILE_DEVICE = "$FindBin::Bin/../data/useragent_device.json";
 my $FILE_OS = "$FindBin::Bin/../data/useragent_os.json";
 
 =head1 FUNCTIONS
-=cut
 
-sub Get
-{
-	return (from_json(read_file($FILE_OS)));
-}
+=head2 Save($data)
+
+=cut
 
 sub Save
 {
@@ -63,7 +62,6 @@ sub Save
 		$json{$os}{$osv} = 1;
 		$json_text = to_json(\%json, { ascii => 1, pretty => 1 });
 	}
-
 	write_file($FILE_OS, $json_text);
 }
 

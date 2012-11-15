@@ -12,6 +12,8 @@ use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib/";
 
+use UsrAgent::Device;
+
 my $FILE_REGEXPS = "$FindBin::Bin/../data/regexps.conf";
 
 my @regexps = ();
@@ -52,11 +54,20 @@ sub Info
         if ($ua =~ $re)
         {
 			%info = %+;
+			$info{browser} ||= 'N/A';
+			$info{browser_version} =~ s/_/./g;
+            $info{os} ||= 'N/A';
+			$info{os_version} =~ s/_/./g;
+			
 			$info{os} = ($info{os} =~ /^(hpw|web)OS$/ 
                 ? 'WebOS' : $info{os});
 			$info{os} = ($info{os} =~ /^Symb(OS|ian|ianOS)$/ 
 				? 'Symbian' : $info{os});
 			$info{useragent} = $ua;
+
+			UsrAgent::Device::Company(\%info);
+			UsrAgent::Device::Type(\%info);
+
             return (%info);
         }
     }

@@ -22,9 +22,21 @@ my %data = (
 		color => 'orange', 
 		website => 'https://www.mozilla.org/firefox/' 
 		},
-	'Internet Explorer' => { color => 'blue' },
-	Opera => { color => 'red' },
-	Safari => { color => 'blue' },
+	'Internet Explorer' => 
+		{ 
+		color => 'blue', 
+		website => 'http://windows.microsoft.com/en-US/internet-explorer/download-ie'
+		},
+	Opera => 
+		{ 
+		color => 'red', 
+		website => 'http://www.opera.com/'
+		},
+	Safari => 
+		{ 
+		color => 'blue',
+		website => 'http://www.apple.com/safari/'
+		},
 	);
 
 =head1 FUNCTIONS
