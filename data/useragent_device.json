@@ -1,0 +1,17 @@
+{
+   "N/A" : {
+      "N/A" : {
+         "N/A" : 2
+      }
+   },
+   "SmartPhone" : {
+      "Samsung" : {
+         "Galaxy Nexus" : 1
+      }
+   },
+   "Tablet" : {
+      "Asus" : {
+         "Transformer TF101" : 1
+      }
+   }
+}

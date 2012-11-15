@@ -55,8 +55,10 @@ sub Info
         {
 			%info = %+;
 			$info{browser} ||= 'N/A';
+			$info{browser_version} ||= 'N/A';
 			$info{browser_version} =~ s/_/./g;
             $info{os} ||= 'N/A';
+			$info{os_version} ||= 'N/A';
 			$info{os_version} =~ s/_/./g;
 			
 			$info{os} = ($info{os} =~ /^(hpw|web)OS$/ 

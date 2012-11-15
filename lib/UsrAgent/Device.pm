@@ -9,17 +9,28 @@ package UsrAgent::Device;
 use strict;
 use warnings;
 
-my %company = (
-	Asus => qw/
-		'Transformer TF\d+'
-		/,
-	HTC => qw/ 
-		'Nexus One'
-		/,
-	Samsung => qw/
-		'Galaxy Nexus'
-		'Nexus S'
-		/
+my %company_models = (
+	Apple => {
+		Computer => join('|', ( 
+			'Macintosh',
+			)),
+		},
+	Asus => { 
+		Tablet => join('|', (
+			'Transformer TF\d+',
+			)),
+		},
+	HTC => {
+		SmartPhone => join('|', (
+			'Nexus One',
+			)),
+		},
+	Samsung => {
+		SmartPhone => join('|', (
+			'Galaxy Nexus',
+			'Nexus S',
+			)),
+		},
 	);
 
 =head2 Company
@@ -30,10 +41,18 @@ sub Company
 {
 	my $info = shift;
 
-    $info->{device_company} = ($info->{device_model} =~ /^Nexus One$/ ? 'HTC' : $info->{device_company});
-    $info->{device_company} = ($info->{device_model} =~ /^(Galaxy Nexus|Nexus S)$/ ? 'Samsung' : $info->{device_company});
-    $info->{device_company} = ($info->{device_model} =~ /^Macintosh$/ ? 'Apple' : $info->{device_company});
-    $info->{device_company} = ($info->{device_model} =~ /^Transformer TF\d+$/ ? 'Asus' : $info->{device_company});
+	if (defined $info->{device_model})
+    {
+		foreach my $c (keys %company_models)
+		{
+			foreach my $t (keys $company_models{$c})
+			{
+				$info->{device_company} = 
+				($info->{device_model} =~ /^($company_models{$c}{$t})$/ 
+				? $c : $info->{device_company});
+			}
+		}
+	}
 }
 
 =head2 Type
@@ -44,10 +63,18 @@ sub Type
 {
     my $info = shift;
 
-    $info->{device_type} = ($info->{device_model} =~ /^Nexus One$/ ? 'SmartPhone' : $info->{device_type});
-    $info->{device_type} = ($info->{device_model} =~ /^(Galaxy Nexus|Nexus S)$/ ? 'SmartPhone' : $info->{device_type});
-    $info->{device_type} = ($info->{device_model} =~ /^Macintosh$/ ? 'Computer' : $info->{device_type});
-    $info->{device_type} = ($info->{device_model} =~ /^Transformer TF\d+$/ ? 'Tablet' : $info->{device_type});
+	if (defined $info->{device_model})
+	{
+		foreach my $c (keys %company_models)
+        {
+            foreach my $t (keys $company_models{$c})
+            {
+                $info->{device_type} =
+                ($info->{device_model} =~ /^($company_models{$c}{$t})$/
+                ? $t : $info->{device_type});
+            }
+        }	
+	}	
 }
 
 1;
