@@ -46,7 +46,9 @@ any ['get', 'post'] => '/' => sub
 
 	template 'home', 
 		{	
-			ip => $ip, ua => $ua, info => \%info, 
+			ip => $ip, 
+			ua => $ua, 
+			info => \%info, 
 			browser_color => $b_data->{color},
 			browser_logo => UsrAgent::Browser::Logo($info{browser}, 32),
 			os_color => $os_data->{color},

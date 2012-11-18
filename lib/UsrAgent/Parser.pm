@@ -55,6 +55,7 @@ sub Info
         {
 			%info = %+;
 			$info{browser} ||= 'N/A';
+			$info{browser} =~ s/MSIE/Internet Explorer/;
 			$info{browser_version} ||= 'N/A';
 			$info{browser_version} =~ s/_/./g;
             $info{os} ||= 'N/A';
@@ -67,6 +68,7 @@ sub Info
 				? 'Symbian' : $info{os});
 			$info{useragent} = $ua;
 
+			$info{os_version} = UsrAgent::OS::Version_name($info{os}, $info{os_version});
 			UsrAgent::Device::Company(\%info);
 			UsrAgent::Device::Type(\%info);
 
@@ -74,7 +76,7 @@ sub Info
         }
     }
 	
-	return (undef);
+	return ();
 }
 
 1;

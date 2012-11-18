@@ -49,7 +49,9 @@ sub Data
 {
 	my $browser = shift;
 
-	return ($data{$browser});
+	return ($data{$browser})	if (defined $browser);
+
+	return (undef);
 }
 
 =head2 Logo($browser, $size)
@@ -60,11 +62,16 @@ sub Logo
 {
     my ($browser, $size) = @_;
 
-    my $logo = $DIR_LOGO_BROWSER 
-		. ($browser =~ /MSIE/i ? 'internet_explorer' : lc $browser);
-    $logo .= "-${size}.png";
+	if (defined $browser)
+	{
+		$browser =~ s/ /_/g;
+    	my $logo = $DIR_LOGO_BROWSER . lc $browser;
+    	$logo .= "-${size}.png";
 
-    return ($logo);
+    	return ($logo);
+	}
+
+	return (undef);
 }
 
 1;

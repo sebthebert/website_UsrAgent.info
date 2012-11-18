@@ -16,6 +16,10 @@
 
 <tr><td>IP</td><td><% ip %></td></tr>
 
+<% IF info.bot %>
+<tr><td>Bot</td><td><% info.bot %></td></tr>
+<tr><td>Bot Version</td><td><% info.bot_version %></td></tr>
+<% ELSE %>
 <tr><td>OS</td>
 <td bgcolor="<% os_color %>"><img src="<% os_logo %>">
 <a href="/os/<% info.os %>"><% info.os %></a></td></tr>
@@ -29,6 +33,7 @@
 <tr><td>Device Type</td><td><% info.device_type %></td></tr>
 <tr><td>Device Company</td><td><% info.device_company %></td></tr>
 <tr><td>Device Model</td><td><% info.device_model %></td></tr>
+<% END %>
 
 </tbody>
 </table>

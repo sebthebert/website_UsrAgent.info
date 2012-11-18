@@ -45,7 +45,7 @@ sub Company
     {
 		foreach my $c (keys %company_models)
 		{
-			foreach my $t (keys $company_models{$c})
+			foreach my $t (keys %{$company_models{$c}})
 			{
 				$info->{device_company} = 
 				($info->{device_model} =~ /^($company_models{$c}{$t})$/ 
@@ -67,7 +67,7 @@ sub Type
 	{
 		foreach my $c (keys %company_models)
         {
-            foreach my $t (keys $company_models{$c})
+            foreach my $t (keys %{$company_models{$c}})
             {
                 $info->{device_type} =
                 ($info->{device_model} =~ /^($company_models{$c}{$t})$/

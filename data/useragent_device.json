@@ -1,12 +1,20 @@
 {
    "N/A" : {
       "N/A" : {
-         "N/A" : 2
+         "N/A" : 56
+      },
+      "HTC" : {
+         "Desire" : 1
       }
    },
    "SmartPhone" : {
       "Samsung" : {
          "Galaxy Nexus" : 1
+      }
+   },
+   "Computer" : {
+      "Apple" : {
+         "Macintosh" : 8
       }
    },
    "Tablet" : {
