@@ -14,7 +14,7 @@
 <table class="table table-bordered">
 <tbody>
 
-<tr><td>IP</td><td><% ip %></td></tr>
+<tr><td>IP</td><td><% ip %> (<% country %>)</td></tr>
 
 <% IF info.bot %>
 <tr><td>Bot</td><td><% info.bot %></td></tr>

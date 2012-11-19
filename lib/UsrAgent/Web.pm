@@ -10,6 +10,7 @@ use strict;
 use warnings;
 
 use Dancer ':syntax';
+use Geo::IP;
 
 use UsrAgent::Browser;
 use UsrAgent::DB;
@@ -29,6 +30,9 @@ any ['get', 'post'] => '/' => sub
 	my $ip = request->remote_address;
 	my $ua = undef;
 
+	my $gi = Geo::IP->new(GEOIP_MEMORY_CACHE);
+	my $country = $gi->country_code_by_addr($ip);
+	
 	if (request->method() eq "POST") 
 	{
 		$ua = params->{ua};		
@@ -47,6 +51,7 @@ any ['get', 'post'] => '/' => sub
 	template 'home', 
 		{	
 			ip => $ip, 
+			country => $country,
 			ua => $ua, 
 			info => \%info, 
 			browser_color => $b_data->{color},
